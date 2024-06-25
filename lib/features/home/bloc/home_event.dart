@@ -3,14 +3,19 @@ part of 'home_bloc.dart';
 @immutable
 abstract class HomeblocEvent {}
 
-class HomeInitialEvvent extends HomeblocEvent {
+class HomeInitialEvvent extends HomeblocEvent {}
 
-  
+class HomeProductWishlistButtonClickedEvent extends HomeblocEvent {
+  final ProductDataModel clickedProduct;
+
+  HomeProductWishlistButtonClickedEvent({required this.clickedProduct});
 }
 
-class HomeProductWishlistButtonClickedEvent extends HomeblocEvent {}
+class HomeProductCartButtonClickedEvent extends HomeblocEvent {
+  final ProductDataModel clickedProduct;
 
-class HomeProductCartButtonClickedEvent extends HomeblocEvent {}
+  HomeProductCartButtonClickedEvent({required this.clickedProduct});
+}
 
 class HomeWishListButtonNavigationEvent extends HomeblocEvent {}
 

@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:grocery_app_bloc/data/cart_items.dart';
 import 'package:grocery_app_bloc/data/grocery_data.dart';
+import 'package:grocery_app_bloc/data/wishlist_item.dart';
 import 'package:grocery_app_bloc/features/home/models/home_products_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
@@ -23,7 +25,7 @@ class HomeBloc extends Bloc<HomeblocEvent, HomeState> {
     // print('worked');
     emit(HomeLoadingState());
     // print('successfully emitted');
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     emit(HomeLoadedSucessState(
         products: Grocery.groceryProducts
             .map((e) => ProductDataModel(
@@ -37,11 +39,15 @@ class HomeBloc extends Bloc<HomeblocEvent, HomeState> {
   FutureOr<void> homeProductWishlistButtonClickedEvent(
       HomeProductWishlistButtonClickedEvent event, Emitter<HomeState> emit) {
     // print("wishList Clicked");
+    wishlistItems.add(event.clickedProduct);
+    emit(HomeProductItemWishlistedActionState());
   }
 
   FutureOr<void> homeProductCartButtonClickedEvent(
       HomeProductCartButtonClickedEvent event, Emitter<HomeState> emit) {
     // print("cart Clicke");
+    cartItems.add(event.clickedProduct);
+    emit(HomeProductItemCartedActionState());
   }
 
   FutureOr<void> homeWishListButtonNavigationEvent(

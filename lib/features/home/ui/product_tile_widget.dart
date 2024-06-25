@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app_bloc/features/home/bloc/home_bloc.dart';
 import 'package:grocery_app_bloc/features/home/models/home_products_model.dart';
 
 class productTileWidget extends StatelessWidget {
   final ProductDataModel productDataModel;
-  const productTileWidget({super.key, required this.productDataModel});
+  final HomeBloc homeBloc;
+  const productTileWidget(
+      {super.key, required this.productDataModel, required this.homeBloc});
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +37,14 @@ class productTileWidget extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        // homeBloc.add(HomeProductWishlistButtonClickedEvent(
-                        //     clickedProduct: productDataModel));
+                        homeBloc.add(HomeProductWishlistButtonClickedEvent(
+                        clickedProduct: productDataModel));
                       },
                       icon: const Icon(Icons.favorite_border)),
                   IconButton(
                       onPressed: () {
-                        // homeBloc.add(HomeProductCartButtonClickedEvent(
-                        //     clickedProduct: productDataModel));
+                        homeBloc.add(HomeProductCartButtonClickedEvent(
+                            clickedProduct: productDataModel));
                       },
                       icon: const Icon(Icons.shopping_bag_outlined)),
                 ],
