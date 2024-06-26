@@ -40,8 +40,8 @@ class Whishlist extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        // homeBloc.add(HomeProductWishlistButtonClickedEvent(
-                        //     clickedProduct: productDataModel));
+                        wishlistBloc.add(WhishRemoveFromEvent(
+                            productDataModel: productDataModel));
                       },
                       icon: Icon(Icons.favorite_border)),
                   IconButton(

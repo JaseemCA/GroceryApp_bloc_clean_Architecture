@@ -12,10 +12,17 @@ part 'wishlist_state.dart';
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   WishlistBloc() : super(WishlistInitial()) {
     on<WishlistEvent>(wishlistInitiaEvent);
+    on<WhishRemoveFromEvent>(whishRemoveFromEvent);
   }
 
   FutureOr<void> wishlistInitiaEvent(
       WishlistEvent event, Emitter<WishlistState> emit) {
+    emit(WishListSuccessState(whishListItems: wishlistItems));
+  }
+
+  FutureOr<void> whishRemoveFromEvent(
+      WhishRemoveFromEvent event, Emitter<WishlistState> emit) {
+    wishlistItems.remove(event.productDataModel);
     emit(WishListSuccessState(whishListItems: wishlistItems));
   }
 }
