@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app_bloc/features/cart/bloc/cart_bloc.dart';
 import 'package:grocery_app_bloc/features/home/models/home_products_model.dart';
 import 'package:grocery_app_bloc/features/wishlist/bloc/wishlist_bloc.dart';
 
